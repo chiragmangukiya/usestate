@@ -1,38 +1,158 @@
-.App {
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.calculator{
   text-align: center;
+  width: 400px;
+  border: 2px #000 solid;
+  padding: 10px;
+  margin: 50px auto;
+}
+#display{
+  padding: 20px;
+  width: 100%;
+  font-size: 30px;
+  text-align: right;
+  margin-bottom: 10px;
+}
+.box{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 10px;
+  grid-template-rows: repeat(4,100px);
+}
+.box input[type="button"]{
+  font-size: 30px;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.tic_tac{
+
+  width: 300px;
+  margin: 100px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3,100px);
+  gap: 10px;
+  grid-template-rows: repeat(3,100px);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.tic_tac input[type="button"]{
+  font-size: 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+
+.todo_box{
+  max-height: 780px;
+  width: 700px;
+  margin: 20px auto;
+  background-color: rgb(238, 219, 255);
+  text-align: center;
+  padding: 30px;
+}
+.todo_title{
+  padding-bottom: 20px;
+  border-bottom: 1px #6518ad solid;
+  color: #6518ad;
+}
+.txt_box{
+  padding: 15px 20px;
+  width: 100%;
+  margin: 20px 0;
+  outline: none;
+  border: 1px blueviolet solid;
+  border-radius: 10px;
+  font-size: 18px;
+}
+.add_btn{
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: blueviolet;
   color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.add_btn:hover{
+  background-color: #6518ad;
+}
+.input_parent{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+}
+.display_data{
+  text-align: left;
+  max-height: 550px;
+  overflow-y: auto;
+}
+.display_data ul{
+  list-style: none;
+}
+.display_data ul li{
+  padding: 15px;
+  border: 2px rgb(203, 147, 255) solid;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #6518ad;
+  text-transform: capitalize;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.display_data ul li > div:first-child{
+  width: 80%;
+}
+.action_btn button{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  margin: 0 10px;
+  cursor: pointer;
+  color: #6518ad;
 }
 
-.App-link {
-  color: #61dafb;
+.result{
+  margin: 100px;
+  display: flex;
+  justify-content: center;
+}
+.result table tr td{
+padding: 10px;
+}
+.result input[type="text"]{
+  padding: 10px;
+  width: 100%;
+  outline: none;
+}
+.result input[type="button"]{
+  width: auto;
+  height: auto;
+  padding: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.all_btn{
+  padding: 30px;
+}
+.btn-theme{
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #003366;
+  color: white;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: bold;
+  border-radius: 10px;
+  margin: 10px;
+}
+.btn-theme:hover{
+  background-color: #ffbc06;
 }
