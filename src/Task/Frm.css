@@ -245,17 +245,24 @@ label {
   transition: background .25s linear;
   -webkit-transition: background .25s linear
 }
+.chk_box .check,.chk_box .check:before{
+  border-radius: 0%;
+  -moz-border-radius: 0%;
+  -webkit-border-radius: 0%;
+  -o-border-radius: 0%;
+  -ms-border-radius: 0%;
+}
 
 input[type=radio] {
   position: absolute;
   visibility: hidden
 }
 
-input[type=radio]:checked~.check {
+input[type=radio]:checked~.check, input[type=checkbox]:checked~.check {
   border: 1px solid #ff6801
 }
 
-input[type=radio]:checked~.check::before {
+input[type=radio]:checked~.check::before, input[type=checkbox]:checked~.check::before {
   background: #ff6801
 }
 

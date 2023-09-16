@@ -31,7 +31,7 @@ const Result = () => {
                setdetail(edata);
           }
           else{
-               setdetail(detail=>[...detail,data]);
+               setdetail([...detail,data]);
                isSetUpdate(false)
           }
           

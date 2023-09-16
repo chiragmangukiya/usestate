@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import './Frm.css'
 
 function Frm() {
 
+  const ref = useRef([]);
   const initial={
     fname: '',
     lname:'',
@@ -13,17 +14,18 @@ function Frm() {
     dob:'',
     pincode:'',
     course:'',
-    email:''
+    email:'',
+    hobby:[]
   }
-
+  
   const [studata,setstudata]=useState(initial);
   const [alldata,setalldata]=useState([]);
-
+  
   const [editid,seteditid]=useState();
   const [isedit,setisedit]=useState(false);
 
   const getData = (e) => {
-      setstudata({...studata,[e.target.name]:e.target.value});  
+    setstudata({...studata,[e.target.name]:e.target.value}); 
   }
 
   const dltData = (dltId) => {
@@ -39,15 +41,32 @@ function Frm() {
   const addData = () => {
 
     if(isedit){
+      
       const edata=[...alldata];
       edata[editid]=studata;
       setalldata(edata)
-      setstudata(initial)
       setisedit(false)
+      
     }
     else{
       setalldata(alldata=>[...alldata,studata]);
-      setstudata(initial)
+      // console.log(alldata);
+      for (let i = 0; i < ref.current.length; i++) {
+          ref.current[i].checked = false;
+      }
+      setstudata({
+        fname: '',
+        lname:'',
+        address:'',
+        gender:'',
+        state:'',
+        city:'',
+        dob:'',
+        pincode:'',
+        course:'',
+        email:'',
+        hobby:[]
+      })
     }
 
   }
@@ -135,6 +154,19 @@ function Frm() {
                     <label htmlFor="email">Email ID :</label>
                     <input type="email" name="email" id="email" onChange={getData} value={studata.email}/>
                   </div>
+                  <div className="form-group">
+                    <label htmlFor="photo">Photo :</label>
+                    <input type="file" name="photo" id="photo" onChange={getData} value={studata.photo}/>
+                  </div>
+                  <div className="">
+                    <label className="radio-label">Hobby :</label>
+                    <input type="checkbox"  ref={(element) => { ref.current[0] = element }} name="hobby" onChange={()=>{ studata.hobby.push("Cricket") }} value="Cricket"></input>Cricket
+
+                    <input type="checkbox" ref={(element) => { ref.current[1] = element }} name="hobby" onChange={()=>{ studata.hobby.push("Reading") }} value="Reading"></input>Reading
+
+                    <input type="checkbox" ref={(element) => { ref.current[2] = element }} name="hobby" onChange={()=>{ studata.hobby.push("Travelling") }} value="Travelling"></input>Travelling
+
+                  </div>
                   <div className="form-submit">
                     <input type="button" defaultValue={(isedit) ? 'Update' : 'Submit'} className="submit" onClick={addData} id='submit' />
                   </div>
@@ -150,6 +182,7 @@ function Frm() {
           <table className='table table-bordered' cellPadding={10} width={80}>
             <tr>
               <th>No</th>
+              <th>Photo</th>
               <th>Student Name</th>
               <th>Address</th>
               <th>Gender</th>
@@ -159,6 +192,7 @@ function Frm() {
               <th>Pincode</th>
               <th>Course</th>
               <th>Email</th>
+              <th>Hobby</th>
               <th>Action</th>
             </tr>
             {
@@ -175,6 +209,7 @@ function Frm() {
                     <td>{item.pincode}</td>
                     <td>{item.course}</td>
                     <td>{item.email}</td>
+                    <td>{item.hobby}</td>
                     <td>
                       <input type="button" className='btn btn-sm btn-info bg-info text-white' value="Update" onClick={()=>{editData(ind)}} />
                       <input type="button" className='btn btn-sm btn-danger bg-danger text-white' value="Delete" onClick={()=>{dltData(ind)}} />

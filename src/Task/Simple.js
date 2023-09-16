@@ -12,12 +12,6 @@ function Simple() {
     console.log(name);
   }
 
-  function UserData(){
-    return <h1>Welcome to the UserData</h1>
-  }
-  function AdminData(){
-    return <h1>Welcome to the AdminData</h1>
-  }
 
   return (
     <>
@@ -35,11 +29,6 @@ function Simple() {
           Click me
           </button>
         </div>
-
-        {
-            // data==='Admin' ?  <AdminData/> : <UserData/>
-            data==='Admin' &&  <AdminData/>
-        }
 
     </>
   )
